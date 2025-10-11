@@ -27,16 +27,14 @@ typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
 //------------------------------------------------------------------------------------
 int main(void)
 {
-    Font god_of_war = LoadFont("GODOFWAR.TTF");
+    
     // Initialization
     //--------------------------------------------------------------------------------------
     const int screenWidth = 1800;
     const int screenHeight = 900;
 
-    const Vector2 
-
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
-
+    Font god_of_war = LoadFont("GODOFWAR.TTF");
     GameScreen currentScreen = LOGO;
 
     // TODO: Initialize all required variables and load all required data here!
@@ -55,12 +53,12 @@ int main(void)
         
             ClearBackground(BLACK);
 
-            DrawTextEx(god_of_war, "Selecione uma opção", {screenWidth*0.02, screenHeight*0.02}, screenHeight * screenWidth * 0.000075, 2.0f, RAYWHITE);
+            DrawTextEx(god_of_war, "Selecione uma opcao", (Vector2){screenWidth*0.02, screenHeight*0.02}, screenHeight * screenWidth * 0.000075, 2.0f, RAYWHITE);
 
-            DrawTextEx(god_of_war, "Jogar", {screenWidth*0.075, screenHeight*0.25}, screenHeight * screenWidth * 0.00007,2.0f, RAYWHITE);
-            DrawTextEx(god_of_war, "Créditos", {screenWidth*0.075, screenHeight*0.40}, screenHeight * screenWidth * 0.00007,2.0f, RAYWHITE);
-            DrawTextEx(god_of_war, "Opções", {screenWidth*0.075, screenHeight*0.55}, screenHeight * screenWidth * 0.00007,2.0f, RAYWHITE);
-            DrawTextEx(god_of_war, "Sair", {screenWidth*0.075, screenHeight*0.70}, screenHeight * screenWidth * 0.00007,2.0f, RAYWHITE);
+            DrawTextEx(god_of_war, "Jogar", (Vector2){screenWidth*0.075, screenHeight*0.25}, 49,2.0f, RAYWHITE);
+            DrawTextEx(god_of_war, "Creditos", (Vector2){screenWidth*0.075, screenHeight*0.40}, 49,2.0f, RAYWHITE);
+            DrawTextEx(god_of_war, "Opcoes", (Vector2){screenWidth*0.075, screenHeight*0.55}, 49,2.0f, RAYWHITE);
+            DrawTextEx(god_of_war, "Sair", (Vector2){screenWidth*0.075, screenHeight*0.70}, 49,2.0f, RAYWHITE);
 
             if (IsKeyPressed(KEY_DOWN))
             {
@@ -102,30 +100,31 @@ int main(void)
             switch (option_selection)
             {
             case 0:
-                DrawTextEx(god_of_war, "Jogar", {screenWidth*0.075, screenHeight*0.25}, screenHeight * screenWidth * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(god_of_war, "Jogar", (Vector2){screenWidth*0.075, screenHeight*0.25}, 49, 2.0f, MAGENTA);
 
                 break;
 
             case 1:
-                DrawTextEx(god_of_war, "Créditos", {screenWidth*0.075, screenHeight*0.40}, screenHeight * screenWidth * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(god_of_war, "Creditos", (Vector2){screenWidth*0.075, screenHeight*0.40}, 49, 2.0f, MAGENTA);
                 
                 break;
 
             case 2:
-                DrawTextEx(god_of_war, "Opções", {screenWidth*0.075, screenHeight*0.55}, screenHeight * screenWidth * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(god_of_war, "Opcoes", (Vector2){screenWidth*0.075, screenHeight*0.55}, 49, 2.0f, MAGENTA);
 
                 break;
 
             case 3:
-                DrawTextEx(god_of_war, "Sair", {screenWidth*0.075, screenHeight*0.70}, screenHeight * screenWidth * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(god_of_war, "Sair", (Vector2){screenWidth*0.075, screenHeight*0.70}, 49, 2.0f, MAGENTA);
     
                 break;
 
             }
 
+        
         EndDrawing();
 
     }
-
+    UnloadFont(god_of_war);
     return 0;
 }
