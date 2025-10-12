@@ -20,7 +20,7 @@ This project is a practical exercise in applying imperative programming principl
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these instructions to get a local copy of the project up and running on your machine.
 
