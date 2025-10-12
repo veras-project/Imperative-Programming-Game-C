@@ -1,6 +1,6 @@
-#include "raylib.h"
-#include "raymath.h"
-#include <math.h>
+#include "main.h"
+
+typedef enum GameScreen {LOGO = 0, TITLE, GAMEPLAY, ENDING} GameScreen;
 
 struct projetil
 {
@@ -11,41 +11,31 @@ struct projetil
 
 int main(void)
 {
-    const int screen_width = 1300, screen_height = 600;
-    int radius = 40, speed = 3000, projectSpeed = 200;
-    float accel = 4.f;
-    InitWindow(screen_width, screen_height, "testing out the game window");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "The Bending of Avatar");
 
-    Vector2 ball = {screen_width / 2, screen_height / 2};
-    Vector2 projectil = {ball.x, ball.y};
-    Vector2 velocity = {0, 0};
+    Font default_font = LoadFontEx("upheavtt.ttf", FONT_SIZE, NULL, 256);
 
-    //SetTargetFPS(60);   
+    GameScreen current_screen = LOGO;
+
+    SetTargetFPS(60);   
 
     while (!WindowShouldClose())
     {
-        float delta_time = GetFrameTime();
 
-        Vector2 input_dir = Vector2Normalize((Vector2){IsKeyDown(KEY_D) - IsKeyDown(KEY_A), IsKeyDown(KEY_S) - IsKeyDown(KEY_W)});
-        Vector2 project_dir = Vector2Normalize((Vector2){IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT), IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)});
+        switch (current_screen)
+        {
+        case LOGO:
+            logo(default_font);
 
-        Vector2 desired_vel = { input_dir.x * speed, input_dir.y * speed};
-        velocity.x += (desired_vel.x -  velocity.x*accel)  * delta_time;
-        velocity.y += (desired_vel.y -  velocity.y*accel) * delta_time;
+            current_screen = TITLE;
+
+            break;
         
-        ball.x += velocity.x * delta_time;
-        ball.y += velocity.y * delta_time;
+        case TITLE:
+            title(default_font);
 
-        projectil.x = (ball.x + 40*project_dir.x);
-        projectil.y =  (ball.y + 40*project_dir.y);
-
-        BeginDrawing();
-
-            ClearBackground(RAYWHITE);
-            DrawCircleGradient(projectil.x, projectil.y, 10, RAYWHITE, BLACK);
-            DrawCircleGradient(ball.x, ball.y, radius, MAGENTA, BLACK);
-        
-        EndDrawing();
+            break;
+        }
 
     }
 
