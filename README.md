@@ -16,10 +16,6 @@ This project is a practical exercise in applying imperative programming principl
 * C
 * raylib
 
-![Raylib Logo](https://github.com/raysan5/raylib/raw/master/logo/raylib-logo_256x256.png)
-
----
-
 ## Getting Started
 
 Follow these instructions to get a local copy of the project up and running on your machine.
@@ -47,8 +43,6 @@ Before you begin, you need to have the **raylib** library installed. You can fin
     ```sh
     ./game
     ```
-
----
 
 ## Project Roadmap
 
