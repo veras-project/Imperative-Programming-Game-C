@@ -1,2 +1,0 @@
-gcc title.c main.c credits.c logo.c -o jogo.exe -I raylib/include -L raylib/lib -lraylib -lopengl32 -lgdi32 
--lwinmm -lm
