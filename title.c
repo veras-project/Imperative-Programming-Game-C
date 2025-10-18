@@ -1,24 +1,24 @@
 #include "main.h"
 
-void title(Font font)
+void title(Font default_font, Texture2D default_image)
 {
-    // Definition of delta time
-    const float delta_time;
+
+    float scale = ((float) SCREEN_WIDTH)/((float) default_image.width);
 
     int option_selection = 0;
 
     while (WindowShouldClose() == 0)
     {
         BeginDrawing();
-        
-            ClearBackground(BLACK);
 
-            DrawTextEx(font, "Selecione uma opção", (Vector2) {SCREEN_WIDTH*0.02, SCREEN_HEIGHT*0.02}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.000075, 2.0f, RAYWHITE);
+            DrawTextureEx(default_image, (Vector2) {0, 0}, 0, scale, GRAY);
 
-            DrawTextEx(font, "Jogar", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.25}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
-            DrawTextEx(font, "Créditos", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.40}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
-            DrawTextEx(font, "Opções", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.55}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
-            DrawTextEx(font, "Sair", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.70}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
+            DrawTextEx(default_font, "Selecione uma opção", (Vector2) {SCREEN_WIDTH*0.02, SCREEN_HEIGHT*0.02}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.000075, 2.0f, RAYWHITE);
+
+            DrawTextEx(default_font, "Jogar", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.25}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
+            DrawTextEx(default_font, "Créditos", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.40}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
+            DrawTextEx(default_font, "Opções", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.55}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
+            DrawTextEx(default_font, "Sair", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.70}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007,2.0f, RAYWHITE);
 
             if (IsKeyPressed(KEY_DOWN))
             {
@@ -47,7 +47,7 @@ void title(Font font)
                     break;
 
                 case 1: // Credits
-                    credits(font);
+                    credits(default_font, default_image);
                     break;
 
                 case 2: // Options
@@ -63,49 +63,28 @@ void title(Font font)
             switch (option_selection)
             {
             case 0:
-                DrawTextEx(font, "Jogar", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.25}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(default_font, "Jogar", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.25}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
 
                 break;
 
             case 1:
-                DrawTextEx(font, "Créditos", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.40}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(default_font, "Créditos", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.40}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
                 
                 break;
 
             case 2:
-                DrawTextEx(font, "Opções", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.55}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(default_font, "Opções", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.55}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
 
                 break;
 
             case 3:
-                DrawTextEx(font, "Sair", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.70}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
+                DrawTextEx(default_font, "Sair", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.70}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
     
                 break;
 
             }
-            switch (option_selection)
-            {
-            case 0:
-                DrawTextEx(font, "Jogar", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.25}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
 
-                break;
-
-            case 1:
-                DrawTextEx(font, "Créditos", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.40}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
-                
-                break;
-
-            case 2:
-                DrawTextEx(font, "Opções", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.55}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
-
-                break;
-
-            case 3:
-                DrawTextEx(font, "Sair", (Vector2) {SCREEN_WIDTH*0.075, SCREEN_HEIGHT*0.70}, SCREEN_HEIGHT * SCREEN_WIDTH * 0.00007, 2.0f, MAGENTA);
-    
-                break;
-
-            }
+            ClearBackground(BLACK);
 
         
         EndDrawing();

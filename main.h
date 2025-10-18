@@ -7,8 +7,8 @@
 #define SCREEN_HEIGHT 500
 #define FONT_SIZE 32
 
-void credits (Font font);
+void credits (Font font, Texture2D default_texture);
 
-void title (Font font);
+void title (Font font, Texture2D default_texture);
 
-void logo (Font font);
+void logo (Font font, Texture2D default_texture);
