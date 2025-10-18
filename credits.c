@@ -3,7 +3,6 @@
 void credits(Font default_font, Texture2D default_image)
 {
 
-
     int x_names = SCREEN_WIDTH * 0.1;
 
     EndDrawing();
